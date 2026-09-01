@@ -1,4 +1,4 @@
-package com.basic.admin.entitiy;
+package com.basic.admin.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
