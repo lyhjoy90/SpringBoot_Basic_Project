@@ -42,8 +42,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/api/users/welcome","/userinfos/new").permitAll()
-                            .requestMatchers("/api/users/**").authenticated();
+                    // /api/students/** 경로를 permitAll에 추가했습니다.
+                    auth.requestMatchers("/api/users/welcome", "/userinfos/new", "/api/students/**").permitAll()
+                            .requestMatchers("/api/users/**").authenticated()
+                            .anyRequest().permitAll();
                 })
                 .formLogin(withDefaults())
                 .build();
